@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GeoWaste Mapper - Smart Eco Campus Management</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
         tailwind.config = {
@@ -30,6 +32,7 @@
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans">
 
+    <!-- NAVBAR -->
     <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm border-b border-slate-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
@@ -53,6 +56,7 @@
         </div>
     </nav>
 
+    <!-- HERO SECTION -->
     <header class="relative bg-gradient-to-br from-geoDark to-slate-900 text-white overflow-hidden py-24 px-4 sm:px-6 lg:px-8">
         <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#10b981_1px,transparent_1px)] [background-size:16px_16px]"></div>
         <div class="max-w-5xl mx-auto text-center relative z-10">
@@ -74,6 +78,7 @@
         </div>
     </header>
 
+    <!-- METRICS / DATA FAKTA -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-12 relative z-20">
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             <div class="bg-white p-6 rounded-2xl shadow-xl border border-slate-100 flex items-start gap-4">
@@ -107,6 +112,7 @@
         </div>
     </section>
 
+    <!-- IDENTIFIKASI MASALAH 5W + 1H -->
     <section id="problem" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
         <div class="text-center max-w-3xl mx-auto mb-16">
             <h2 class="text-xs font-bold text-geoGreen tracking-widest uppercase mb-2">Analisis Fenomena</h2>
@@ -115,31 +121,37 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- WHAT -->
             <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition">
                 <div class="w-12 h-12 rounded-xl bg-slate-900 text-white flex items-center justify-center font-bold text-lg mb-6">W1</div>
                 <h4 class="font-bold text-xl text-slate-900 mb-2">WHAT <span class="text-sm font-normal text-slate-400">(Apa)</span></h4>
                 <p class="text-sm text-slate-600 leading-relaxed">Sampah tidak terpilah dengan benar dan menumpuk di titik-titik TPS, kantin, area kos sekitar kampus ITS Sukolilo. Dominan sampah organik sisa makanan dan sampah plastik sekali pakai.</p>
             </div>
+            <!-- WHERE -->
             <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition">
                 <div class="w-12 h-12 rounded-xl bg-slate-900 text-white flex items-center justify-center font-bold text-lg mb-6">W2</div>
                 <h4 class="font-bold text-xl text-slate-900 mb-2">WHERE <span class="text-sm font-normal text-slate-400">(Dimana)</span></h4>
                 <p class="text-sm text-slate-600 leading-relaxed">Kantin terpusat kampus ITS, titik TPS di tiap gedung, area permukiman kos di Jl. Teknik Kimia, Jl. Raya ITS, dan sekitar Perumdos Blok U Sukolilo.</p>
             </div>
+            <!-- WHEN -->
             <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition">
                 <div class="w-12 h-12 rounded-xl bg-slate-900 text-white flex items-center justify-center font-bold text-lg mb-6">W3</div>
                 <h4 class="font-bold text-xl text-slate-900 mb-2">WHEN <span class="text-sm font-normal text-slate-400">(Kapan)</span></h4>
                 <p class="text-sm text-slate-600 leading-relaxed">Terjadi setiap hari, puncaknya pada jam makan siang (11.00-13.00) dan akhir perkuliahan (16.00-18.00). Memburuk saat awal semester dan event kampus besar.</p>
             </div>
+            <!-- WHO -->
             <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition">
                 <div class="w-12 h-12 rounded-xl bg-slate-900 text-white flex items-center justify-center font-bold text-lg mb-6">W4</div>
                 <h4 class="font-bold text-xl text-slate-900 mb-2">WHO <span class="text-sm font-normal text-slate-400">(Siapa)</span></h4>
                 <p class="text-sm text-slate-600 leading-relaxed">Mahasiswa (~21.000 orang), dosen & staf, pedagang kantin, penghuni kos sekitar ITS di Kel. Keputih dan Sukolilo, serta petugas kebersihan kampus.</p>
             </div>
+            <!-- WHY -->
             <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition">
                 <div class="w-12 h-12 rounded-xl bg-slate-900 text-white flex items-center justify-center font-bold text-lg mb-6">W5</div>
                 <h4 class="font-bold text-xl text-slate-900 mb-2">WHY <span class="text-sm font-normal text-slate-400">(Mengapa)</span></h4>
                 <p class="text-sm text-slate-600 leading-relaxed">Minimnya kesadaran pilah sampah, infrastruktur TPS yang masih tercampur saat pengangkutan, tidak ada insentif ekonomi bagi warga untuk memilah, serta rendahnya frekuensi pengangkutan.</p>
             </div>
+            <!-- HOW -->
             <div class="bg-white p-8 rounded-2xl border border-emerald-100 bg-emerald-50/20 shadow-sm hover:shadow-md transition">
                 <div class="w-12 h-12 rounded-xl bg-geoGreen text-white flex items-center justify-center font-bold text-lg mb-6">H1</div>
                 <h4 class="font-bold text-xl text-slate-900 mb-2">HOW <span class="text-sm font-normal text-slate-400">(Bagaimana)</span></h4>
@@ -148,6 +160,7 @@
         </div>
     </section>
 
+    <!-- SOLUSI & ANALISIS SWOT -->
     <section id="swot" class="bg-slate-900 text-white py-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16">
@@ -155,7 +168,9 @@
                 <p class="text-3xl sm:text-4xl font-black tracking-tight">Analisis SWOT & Manajemen Risiko</p>
             </div>
 
+            <!-- GRID SWOT -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+                <!-- STRENGTHS -->
                 <div class="bg-slate-800/60 border border-slate-800 p-8 rounded-2xl">
                     <div class="flex items-center gap-3 mb-4">
                         <span class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold">S</span>
@@ -168,6 +183,7 @@
                         <li>Sesuai dengan blueprint program ITS sebagai Smart Eco Campus.</li>
                     </ul>
                 </div>
+                <!-- WEAKNESSES -->
                 <div class="bg-slate-800/60 border border-slate-800 p-8 rounded-2xl">
                     <div class="flex items-center gap-3 mb-4">
                         <span class="w-8 h-8 rounded-lg bg-rose-500/20 text-rose-400 flex items-center justify-center font-bold">W</span>
@@ -180,6 +196,7 @@
                         <li>Risiko degradasi akurasi sensor akibat lindi dan kelembapan lingkungan ekstrim.</li>
                     </ul>
                 </div>
+                <!-- OPPORTUNITIES -->
                 <div class="bg-slate-800/60 border border-slate-800 p-8 rounded-2xl">
                     <div class="flex items-center gap-3 mb-4">
                         <span class="w-8 h-8 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold">O</span>
@@ -192,6 +209,7 @@
                         <li>Akses pendanaan eksternal startup berbasis sirkular ekonomi dan ESG.</li>
                     </ul>
                 </div>
+                <!-- THREATS -->
                 <div class="bg-slate-800/60 border border-slate-800 p-8 rounded-2xl">
                     <div class="flex items-center gap-3 mb-4">
                         <span class="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold">T</span>
@@ -206,6 +224,7 @@
                 </div>
             </div>
 
+            <!-- RISK MITIGATION -->
             <div class="bg-gradient-to-r from-geoBlue to-slate-800 p-8 rounded-3xl border border-blue-900/30">
                 <h3 class="text-xl font-bold mb-6 flex items-center gap-2 text-geoGreen">
                     <i class="fa-solid fa-shield-halved"></i> Strategi Mitigasi Risiko & Eksekusi Ide
@@ -236,6 +255,7 @@
         </div>
     </section>
 
+    <!-- PERSONA BOARD -->
     <section id="persona" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
         <div class="text-center max-w-3xl mx-auto mb-16">
             <h2 class="text-xs font-bold text-geoGreen tracking-widest uppercase mb-2">Target Market</h2>
@@ -243,6 +263,7 @@
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- MALE PERSONA -->
             <div class="bg-white rounded-3xl p-8 border border-slate-100 shadow-xl flex flex-col justify-between">
                 <div>
                     <div class="flex items-center gap-4 mb-6 pb-6 border-b border-slate-100">
@@ -277,6 +298,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- TECH LITERACY -->
                 <div>
                     <h4 class="font-bold text-xs uppercase text-slate-400 tracking-wider mb-2">Literasi Teknologi</h4>
                     <div class="space-y-2">
@@ -292,6 +314,7 @@
                 </div>
             </div>
 
+            <!-- FEMALE PERSONA -->
             <div class="bg-white rounded-3xl p-8 border border-slate-100 shadow-xl flex flex-col justify-between">
                 <div>
                     <div class="flex items-center gap-4 mb-6 pb-6 border-b border-slate-100">
@@ -326,6 +349,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- TECH LITERACY -->
                 <div>
                     <h4 class="font-bold text-xs uppercase text-slate-400 tracking-wider mb-2">Literasi Teknologi</h4>
                     <div class="space-y-2">
@@ -343,6 +367,7 @@
         </div>
     </section>
 
+    <!-- EMPATHY MAP -->
     <section id="empathy" class="bg-slate-100 py-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16">
@@ -401,6 +426,7 @@
         </div>
     </section>
 
+    <!-- USER JOURNEY MAP -->
     <section id="ujm" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
         <div class="text-center max-w-3xl mx-auto mb-16">
             <h2 class="text-xs font-bold text-geoGreen tracking-widest uppercase mb-2">Alur Operasional</h2>
@@ -408,6 +434,7 @@
         </div>
 
         <div class="relative border-l-2 border-slate-200 ml-4 md:ml-32 space-y-12">
+            <!-- STEP 1 -->
             <div class="relative pl-6 md:pl-8">
                 <span class="absolute -left-3.5 top-1 bg-geoBlue text-white text-xs font-bold px-2 py-0.5 rounded-full border-4 border-white">1</span>
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-4 bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
@@ -422,6 +449,7 @@
                     </div>
                 </div>
             </div>
+            <!-- STEP 2 -->
             <div class="relative pl-6 md:pl-8">
                 <span class="absolute -left-3.5 top-1 bg-geoBlue text-white text-xs font-bold px-2 py-0.5 rounded-full border-4 border-white">2</span>
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-4 bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
@@ -436,6 +464,7 @@
                     </div>
                 </div>
             </div>
+            <!-- STEP 3 -->
             <div class="relative pl-6 md:pl-8">
                 <span class="absolute -left-3.5 top-1 bg-geoBlue text-white text-xs font-bold px-2 py-0.5 rounded-full border-4 border-white">3</span>
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-4 bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
@@ -450,6 +479,7 @@
                     </div>
                 </div>
             </div>
+            <!-- STEP 4 -->
             <div class="relative pl-6 md:pl-8">
                 <span class="absolute -left-3.5 top-1 bg-geoBlue text-white text-xs font-bold px-2 py-0.5 rounded-full border-4 border-white">4</span>
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-4 bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
@@ -464,6 +494,7 @@
                     </div>
                 </div>
             </div>
+            <!-- STEP 5 -->
             <div class="relative pl-6 md:pl-8">
                 <span class="absolute -left-3.5 top-1 bg-geoBlue text-white text-xs font-bold px-2 py-0.5 rounded-full border-4 border-white">5</span>
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-4 bg-white p-6 rounded-2xl border border-emerald-100 bg-emerald-50/10 shadow-sm">
@@ -481,124 +512,89 @@
         </div>
     </section>
 
+    <!-- UPDATE SECTION #PRODUCTS: INTEGRASI GAMBAR PROTOTIPE DAN SELULER GAWAI -->
     <section id="products" class="bg-slate-100 py-24 border-t border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-xs font-bold text-geoGreen tracking-widest uppercase mb-2">Prototipe Fisik Sistem</h2>
-                <p class="text-3xl sm:text-4xl font-black tracking-tight text-slate-900">Spesifikasi Alat & Desain Penempatan</p>
-                <p class="text-slate-500 mt-4">Integrasi sistematis kompartemen ganda dengan panel surya dan pemantau sensor tinggi wadah.</p>
+                <h2 class="text-xs font-bold text-geoGreen tracking-widest uppercase mb-2">Prototipe Fisik & Sistem Monitoring</h2>
+                <p class="text-3xl sm:text-4xl font-black tracking-tight text-slate-900">Spesifikasi Alat & Integrasi Seluler</p>
+                <p class="text-slate-500 mt-4">Kombinasi perangkat keras stasiun kompartemen ganda di lapangan dengan antarmuka pelacakan gawai tim kebersihan secara real-time.</p>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <!-- LAYOUT BARU: KOMPARASI DUA GAMBAR ASLI DENGAN PENJELASAN ELEGAN -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
                 
-                <div class="lg:col-span-5 space-y-6">
-                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80 flex gap-4 items-start hover:shadow-md transition">
-                        <div class="p-3 bg-amber-50 text-amber-500 rounded-xl text-xl shadow-inner"><i class="fa-solid fa-solar-panel"></i></div>
-                        <div>
-                            <h4 class="font-black text-slate-900 text-base">Sistem Panel Surya Mandiri</h4>
-                            <p class="text-xs text-slate-500 mt-1 leading-relaxed">Sistem atap fotovoltaik monokristalin kokoh sebagai penyuplai daya independen bebas jaringan listrik eksternal (*Off-grid Hub*).</p>
+                <!-- BLOK 1: PROTOTIPE HARDWARE DI LAPANGAN -->
+                <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-lg flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="bg-amber-500/10 text-amber-600 text-xs font-bold px-3 py-1 rounded-full border border-amber-500/20"><i class="fa-solid fa-solar-panel"></i> Hardware Unit</span>
+                            <span class="text-slate-400 font-mono text-[10px]">STATION NODE VIEW</span>
                         </div>
+                        <h3 class="font-black text-slate-900 text-xl mb-2">Kemandirian Energi Kompartemen Ganda</h3>
+                        <p class="text-xs text-slate-500 leading-relaxed mb-6">Integrasi struktur wadah pemilah sampah organik dan non-organik yang disokong panel surya fotovoltaik monokristalin serta modul mikrokontroler pengolah lokal.</p>
                     </div>
-
-                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80 flex gap-4 items-start hover:shadow-md transition">
-                        <div class="p-3 bg-blue-50 text-geoBlue rounded-xl text-xl shadow-inner"><i class="fa-solid fa-microchip"></i></div>
-                        <div>
-                            <h4 class="font-black text-slate-900 text-base">Kotak Kontrol IoT Sentral</h4>
-                            <p class="text-xs text-slate-500 mt-1 leading-relaxed">Dilengkapi layar indikator lokal LCD, mikrokontroler pengolah data jarak tangkap, dan baterai cadangan yang terlindung di bawah panel surya.</p>
-                        </div>
-                    </div>
-
-                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80 flex gap-4 items-start hover:shadow-md transition">
-                        <div class="p-3 bg-emerald-50 text-geoGreen rounded-xl text-xl shadow-inner"><i class="fa-solid fa-mobile-screen-button"></i></div>
-                        <div>
-                            <h4 class="font-black text-slate-900 text-base">Integrasi Dashboard Seluler</h4>
-                            <p class="text-xs text-slate-500 mt-1 leading-relaxed">Menampilkan kalkulasi volume sisa ruang wadah secara persentase interaktif langsung ke gawai tim kebersihan.</p>
+                    
+                    <!-- Wadah Gambar Prototip Fisik Asli -->
+                    <div class="w-full bg-slate-50 rounded-2xl overflow-hidden border border-slate-100 aspect-[4/3] flex items-center justify-center relative group">
+                        <img src="WhatsApp Image 2026-06-04 at 10.35.08_2.jpeg" alt="GeoWaste Hardware Prototype" class="w-full h-full object-cover group-hover:scale-102 transition duration-500">
+                        <div class="absolute bottom-3 left-3 bg-slate-950/70 backdrop-blur-sm text-white text-[10px] px-2 py-1 rounded flex items-center gap-1.5 border border-white/10">
+                            <i class="fa-solid fa-camera"></i> Dokumen Prototip Lapangan KBT-14
                         </div>
                     </div>
                 </div>
 
-                <div class="lg:col-span-7 bg-white p-8 rounded-3xl border border-slate-200 shadow-xl relative min-h-[500px] flex flex-col justify-between overflow-hidden">
-                    <div class="absolute top-0 right-0 bg-slate-900 text-white font-mono text-[10px] px-4 py-1.5 rounded-bl-xl border-l border-b border-slate-800">
-                        PROTOTYPE LAYOUT MODEL
+                <!-- BLOK 2: INTEGRASI SENSOR & SELULER (GAWAI TIM KEBERSIHAN) -->
+                <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-lg flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="bg-geoGreen/10 text-geoGreen text-xs font-bold px-3 py-1 rounded-full border border-geoGreen/20"><i class="fa-solid fa-mobile-screen"></i> Mobile System</span>
+                            <span class="text-slate-400 font-mono text-[10px]">UI APPLICATION INTEGRATION</span>
+                        </div>
+                        <h3 class="font-black text-slate-900 text-xl mb-2">Garbage Tank Telemetry Application</h3>
+                        <p class="text-xs text-slate-500 leading-relaxed mb-6">Penerjemahan telemetri pancaran transduser ultrasonik tersegel dan sel daya litium menjadi visual persentase level tampungan akurat pada gawai tim kebersihan.</p>
                     </div>
 
-                    <div class="relative w-full flex flex-col items-center pt-4 z-10">
-                        <div class="w-72 h-14 bg-gradient-to-tr from-slate-700 to-slate-800 rounded-lg border-2 border-slate-500 shadow-md transform -skew-x-12 flex flex-col justify-between p-1 overflow-hidden">
-                            <div class="grid grid-cols-4 gap-1 h-full w-full opacity-40">
-                                <div class="border-r border-b border-white"></div><div class="border-r border-b border-white"></div><div class="border-r border-b border-white"></div><div class="border-b border-white"></div>
-                                <div class="border-r border-white"></div><div class="border-r border-white"></div><div class="border-r border-white"></div><div></div>
-                            </div>
+                    <!-- Wadah Gambar Komponen Aplikasi Gawai Seluler -->
+                    <div class="w-full bg-slate-50 rounded-2xl overflow-hidden border border-slate-100 aspect-[4/3] flex items-center justify-center relative group">
+                        <img src="WhatsApp Image 2026-06-04 at 10.37.21_2.jpeg" alt="GeoWaste Mobile Integration and Sensors" class="w-full h-full object-cover group-hover:scale-102 transition duration-500">
+                        <div class="absolute bottom-3 left-3 bg-slate-950/70 backdrop-blur-sm text-white text-[10px] px-2 py-1 rounded flex items-center gap-1.5 border border-white/10">
+                            <i class="fa-solid fa-signal"></i> Skema Sensor & UI Aplikasi Seluler
                         </div>
-                        
-                        <div class="absolute left-[70%] top-6 border-l-2 border-dashed border-amber-500 h-10 w-8 border-b-2">
-                            <span class="absolute -right-28 top-6 bg-amber-500/10 border border-amber-500 text-amber-600 font-bold text-[9px] px-1.5 py-0.5 rounded">Photovoltaic Top Roof</span>
-                        </div>
-
-                        <div class="w-3 bg-slate-400 h-20 shadow-inner relative flex justify-center">
-                            <div class="absolute bottom-2 w-12 h-14 bg-slate-800 rounded border border-slate-600 shadow p-1 flex flex-col justify-between items-center">
-                                <div class="w-full bg-cyan-400/20 text-cyan-400 font-mono text-[6px] p-0.5 rounded border border-cyan-400/30 text-center animate-pulse">
-                                    SYS OK 68%
-                                </div>
-                                <div class="w-2 h-2 bg-emerald-500 rounded-full animate-ping"></div>
-                            </div>
-                            
-                            <div class="absolute right-6 bottom-6 border-b-2 border-dashed border-blue-500 w-12">
-                                <span class="absolute -left-28 -top-2.5 bg-blue-500/10 border border-blue-500 text-geoBlue font-bold text-[9px] px-1.5 py-0.5 rounded">IoT Central Controller</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="w-full bg-slate-100 p-4 rounded-2xl border border-slate-200 grid grid-cols-2 gap-6 relative items-end z-10 shadow-inner">
-                        
-                        <div class="group relative bg-slate-700 p-3 rounded-b-xl rounded-t-md border-t-8 border-amber-500 shadow-md flex flex-col justify-between h-44 transition transform hover:-translate-y-1">
-                            <div class="flex justify-between items-start">
-                                <span class="text-[8px] bg-amber-500 text-slate-900 font-black px-1.5 py-0.5 rounded">NON-ORGANIK</span>
-                                <div class="w-4 h-4 bg-slate-900/40 rounded-full flex items-center justify-center text-[8px] text-white"><i class="fa-solid fa-recycle"></i></div>
-                            </div>
-                            <div class="absolute top-1 left-1/2 transform -translate-x-1/2 flex gap-1 bg-slate-900 px-1 py-0.5 rounded-full border border-slate-600">
-                                <div class="w-1 h-1 bg-cyan-400 rounded-full animate-ping"></div>
-                                <div class="w-1 h-1 bg-cyan-400 rounded-full"></div>
-                            </div>
-
-                            <div class="w-full bg-slate-800 rounded border border-slate-600/40 p-2 text-center mt-auto">
-                                <p class="text-[9px] text-slate-400 uppercase font-bold tracking-wider">Kapasitas</p>
-                                <p class="text-base font-black text-amber-500">32% <span class="text-[8px] font-normal text-slate-400">Penuh</span></p>
-                                <div class="w-full bg-slate-900 h-1 rounded-full mt-1 overflow-hidden">
-                                    <div class="bg-amber-500 h-full" style="width: 32%"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="group relative bg-slate-700 p-3 rounded-b-xl rounded-t-md border-t-8 border-emerald-500 shadow-md flex flex-col justify-between h-44 transition transform hover:-translate-y-1">
-                            <div class="flex justify-between items-start">
-                                <span class="text-[8px] bg-emerald-500 text-slate-900 font-black px-1.5 py-0.5 rounded">ORGANIK</span>
-                                <div class="w-4 h-4 bg-slate-900/40 rounded-full flex items-center justify-center text-[8px] text-white"><i class="fa-solid fa-leaf"></i></div>
-                            </div>
-                            <div class="absolute top-1 left-1/2 transform -translate-x-1/2 flex gap-1 bg-slate-900 px-1 py-0.5 rounded-full border border-slate-600">
-                                <div class="w-1 h-1 bg-rose-400 rounded-full animate-ping"></div>
-                                <div class="w-1 h-1 bg-rose-400 rounded-full"></div>
-                            </div>
-
-                            <div class="w-full bg-slate-800 rounded border border-slate-600/40 p-2 text-center mt-auto">
-                                <p class="text-[9px] text-slate-400 uppercase font-bold tracking-wider">Kapasitas</p>
-                                <p class="text-base font-black text-rose-400">68% <span class="text-[8px] font-normal text-slate-400">Penuh</span></p>
-                                <div class="w-full bg-slate-900 h-1 rounded-full mt-1 overflow-hidden">
-                                    <div class="bg-rose-500 h-full" style="width: 68%"></div>
-                                </div>
-                            </div>
-                            <div class="absolute -top-12 right-2 bg-rose-500 text-white font-bold text-[8px] px-2 py-1 rounded shadow-lg border border-rose-400 animate-bounce flex items-center gap-1">
-                                <i class="fa-solid fa-triangle-exclamation"></i> HIGH LEVEL WARNING
-                            </div>
-                        </div>
-
-                        <div class="absolute -bottom-2 left-0 right-0 h-2 bg-gradient-to-r from-slate-400 to-slate-500 rounded shadow border-b border-slate-600"></div>
                     </div>
                 </div>
 
             </div>
+
+            <!-- RINGKASAN SPESIFIKASI SPEK TEKNIS TAMBAHAN -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+                <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200/60 flex items-start gap-3">
+                    <div class="p-2 bg-blue-50 text-geoBlue rounded-lg text-lg"><i class="fa-solid fa-circle-nodes"></i></div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 text-sm">Ultrasonic Telemetry</h4>
+                        <p class="text-[11px] text-slate-500 mt-1">Mengukur jarak pantul internal penutup secara kontinu, meminimalisir penumpukan berlebih sebelum terjadi aduan.</p>
+                    </div>
+                </div>
+                <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200/60 flex items-start gap-3">
+                    <div class="p-2 bg-emerald-50 text-geoGreen rounded-lg text-lg"><i class="fa-solid fa-battery-full"></i></div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 text-sm">Lithium Core Storage</h4>
+                        <p class="text-[11px] text-slate-500 mt-1">Penyimpanan daya siklus tinggi terintegrasi menjamin kelancaran modul kirim data konstan sepanjang hari.</p>
+                    </div>
+                </div>
+                <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200/60 flex items-start gap-3">
+                    <div class="p-2 bg-purple-50 text-purple-600 rounded-lg text-lg"><i class="fa-solid fa-map-location-dot"></i></div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 text-sm">Geolocated Address Alert</h4>
+                        <p class="text-[11px] text-slate-500 mt-1">Mengirimkan notifikasi parameter level kritis lengkap dengan titik koordinat peta lokasi TPS bersangkutan.</p>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 
+    <!-- RENOVASI SECTION 2: ALUR MEKANISME KERJA DENGAN PANAH ALIRAN DINAMIS -->
     <section id="mechanism" class="bg-slate-900 text-white py-24 border-t border-slate-800 relative overflow-hidden">
         <div class="absolute inset-0 opacity-5 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:24px_24px]"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -608,11 +604,12 @@
                 <p class="text-slate-400 mt-4">Aliran penanganan data spasial transparan dari transmisi wadah pintar lokal menuju pangkalan data pusat pengangkutan armada.</p>
             </div>
 
+            <!-- PIPELINE WORKFLOW DENGAN INDIKATOR PANAH SEJAJAR -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
                 
+                <!-- LANGKAH 1: SENSING -->
                 <div class="bg-slate-800/50 border border-slate-800 p-6 rounded-2xl flex flex-col justify-between relative group hover:border-geoGreen/40 transition shadow-lg">
                     <div class="hidden lg:block absolute top-1/2 -right-5 transform -translate-y-1/2 z-20 text-geoGreen font-bold bg-slate-900 w-8 h-8 rounded-full border border-slate-800 text-center leading-8 shadow-md flow-arrow"></div>
-                    
                     <div class="absolute -top-4 left-6 bg-geoGreen text-slate-900 text-[10px] font-black px-3 py-1 rounded-md tracking-wider">01. SENSING NODE</div>
                     <div class="mt-4">
                         <div class="text-geoGreen text-3xl mb-4"><i class="fa-solid fa-compress flex"></i></div>
@@ -622,9 +619,9 @@
                     <div class="text-[9px] bg-slate-950 p-2 rounded-lg mt-6 text-slate-500 font-mono border border-slate-800">Hardware: JSN-SR04T Waterproof</div>
                 </div>
 
+                <!-- LANGKAH 2: TRANSMISSION -->
                 <div class="bg-slate-800/50 border border-slate-800 p-6 rounded-2xl flex flex-col justify-between relative group hover:border-blue-500/40 transition shadow-lg">
                     <div class="hidden lg:block absolute top-1/2 -right-5 transform -translate-y-1/2 z-20 text-blue-400 font-bold bg-slate-900 w-8 h-8 rounded-full border border-slate-800 text-center leading-8 shadow-md flow-arrow"></div>
-                    
                     <div class="absolute -top-4 left-6 bg-blue-500 text-white text-[10px] font-black px-3 py-1 rounded-md tracking-wider">02. TRANSMISSION</div>
                     <div class="mt-4">
                         <div class="text-blue-400 text-3xl mb-4"><i class="fa-solid fa-tower-broadcast"></i></div>
@@ -634,9 +631,9 @@
                     <div class="text-[9px] bg-slate-950 p-2 rounded-lg mt-6 text-slate-500 font-mono border border-slate-800">Protokol: MQTT / JSON Payload</div>
                 </div>
 
+                <!-- LANGKAH 3: SERVER & PROCESSING -->
                 <div class="bg-gradient-to-b from-slate-800/60 to-emerald-950/20 border border-emerald-900/40 p-6 rounded-2xl flex flex-col justify-between relative group hover:border-amber-500/40 transition shadow-lg">
                     <div class="hidden lg:block absolute top-1/2 -right-5 transform -translate-y-1/2 z-20 text-amber-400 font-bold bg-slate-900 w-8 h-8 rounded-full border border-slate-800 text-center leading-8 shadow-md flow-arrow"></div>
-                    
                     <div class="absolute -top-4 left-6 bg-amber-500 text-slate-900 text-[10px] font-black px-3 py-1 rounded-md tracking-wider">03. CLOUD SERVER AI</div>
                     <div class="mt-4">
                         <div class="text-amber-400 text-3xl mb-4"><i class="fa-solid fa-brain"></i></div>
@@ -646,6 +643,7 @@
                     <div class="text-[9px] bg-slate-950 p-2 rounded-lg mt-6 text-emerald-400/60 font-mono border border-slate-800/40">Engine: MongoDB & GIS Mapping</div>
                 </div>
 
+                <!-- LANGKAH 4: ACTION / COLLECTION -->
                 <div class="bg-slate-800/50 border border-slate-800 p-6 rounded-2xl flex flex-col justify-between relative group hover:border-rose-500/40 transition shadow-lg">
                     <div class="absolute -top-4 left-6 bg-rose-500 text-white text-[10px] font-black px-3 py-1 rounded-md tracking-wider">04. DISPATCH ACTION</div>
                     <div class="mt-4">
@@ -658,6 +656,7 @@
 
             </div>
 
+            <!-- FOOTNOTE INFORMASI EFISIENSI -->
             <div class="mt-12 p-6 rounded-2xl bg-slate-800/40 border border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs">
                 <div class="flex items-center gap-3">
                     <div class="text-geoGreen text-lg"><i class="fa-solid fa-circle-check"></i></div>
@@ -667,6 +666,7 @@
         </div>
     </section>
 
+    <!-- FOOTER & TEAM DEVELOPMENT -->
     <footer class="bg-geoDark text-slate-400 py-16 border-t border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 pb-12 border-b border-slate-800">
