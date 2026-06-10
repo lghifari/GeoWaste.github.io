@@ -1,251 +1,335 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GeoWaste Mapper - Smart City IoT</title>
-
-<!-- Leaflet GIS -->
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-
-<style>
-body{
-margin:0;
-font-family:Arial;
-background:#0b1220;
-color:white;
-scroll-behavior:smooth;
-}
-
-nav{
-position:fixed;
-top:0;
-width:100%;
-background:#0f172acc;
-padding:10px;
-display:flex;
-justify-content:center;
-gap:15px;
-z-index:1000;
-}
-
-nav a{
-color:white;
-text-decoration:none;
-font-size:12px;
-}
-
-section{
-padding:80px 10%;
-}
-
-h2{
-color:#38bdf8;
-}
-
-.card{
-background:rgba(255,255,255,0.06);
-padding:15px;
-margin:10px 0;
-border-radius:12px;
-}
-
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:10px;
-}
-
-.hero{
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-text-align:center;
-background:radial-gradient(circle,#1e3a8a,#0b1220);
-}
-
-.hero h1{
-font-size:3rem;
-}
-
-.badge{
-background:#38bdf8;
-color:black;
-padding:5px 10px;
-border-radius:10px;
-font-size:12px;
-display:inline-block;
-margin-bottom:10px;
-}
-
-.bar{
-height:10px;
-background:#1f2937;
-border-radius:10px;
-overflow:hidden;
-}
-
-.fill{
-height:10px;
-background:#22c55e;
-}
-
-.alert{
-background:red;
-padding:5px;
-border-radius:10px;
-font-size:12px;
-}
-
-#map{
-height:400px;
-border-radius:12px;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoWaste Mapper - Smart Eco Campus Management</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        geoGreen: '#10B981',
+                        geoBlue: '#1E3A8A',
+                        geoDark: '#0F172A'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        .flow-arrow::after {
+            content: "\f061";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+        }
+    </style>
 </head>
+<body class="bg-slate-50 text-slate-800 font-sans">
 
-<body>
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-earth-asia text-geoGreen text-2xl"></i>
+                    <span class="font-bold text-xl tracking-tight text-geoBlue">GeoWaste<span class="text-geoGreen">Mapper</span></span>
+                </div>
+                <div class="hidden md:flex space-x-6 font-medium text-sm text-slate-600">
+                    <a href="#problem" class="hover:text-geoGreen transition">Identifikasi Masalah</a>
+                    <a href="#swot" class="hover:text-geoGreen transition">Analisis SWOT</a>
+                    <a href="#persona" class="hover:text-geoGreen transition">Persona Board</a>
+                    <a href="#empathy" class="hover:text-geoGreen transition">Empathy Map</a>
+                    <a href="#ujm" class="hover:text-geoGreen transition">User Journey</a>
+                    <a href="#products" class="hover:text-geoGreen transition">Spesifikasi Produk</a>
+                    <a href="#mechanism" class="hover:text-geoGreen transition">Mekanisme Kerja</a>
+                </div>
+                <div>
+                    <a href="#demo" class="bg-geoBlue hover:bg-blue-900 text-white px-4 py-2 rounded-full text-sm font-semibold transition shadow-md shadow-blue-950/20">Live Demo</a>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-<nav>
-<a href="#masalah">Masalah</a>
-<a href="#swot">SWOT</a>
-<a href="#persona">Persona</a>
-<a href="#iot">IoT</a>
-<a href="#map">GIS</a>
-</nav>
+    <header class="relative bg-gradient-to-br from-geoDark to-slate-900 text-white overflow-hidden py-24 px-4 sm:px-6 lg:px-8">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#10b981_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        <div class="max-w-5xl mx-auto text-center relative z-10">
+            <span class="bg-geoGreen/20 text-geoGreen border border-geoGreen/30 text-xs uppercase tracking-widest font-bold px-3 py-1 rounded-full">Solusi Berbasis GIS & IoT</span>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight mt-6 mb-6 leading-tight">
+                Transformasi Pengelolaan Sampah Kampus Berbasis Data Spasial <span class="text-geoGreen">Real-Time</span>
+            </h1>
+            <p class="text-lg text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed">
+                Mengintegrasikan Sensor Ultrasonik murah dan Web-GIS untuk mengatasi overflow TPS, mengoptimalkan rute pengangkutan, serta mendukung perwujudan target Smart Eco Campus yang bersih dan efisien. [cite: 68]
+            </p>
+        </div>
+    </header>
 
-<!-- HERO -->
-<div class="hero">
-<div>
-<h1>GeoWaste Mapper</h1>
-<p>Sistem Smart Waste IoT + GIS Real-Time Monitoring</p>
-</div>
-</div>
+    <section id="problem" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <h2 class="text-xs font-bold text-geoGreen tracking-widest uppercase mb-2">Analisis Fenomena</h2>
+            <p class="text-3xl sm:text-4xl font-black tracking-tight text-slate-900">Identifikasi Masalah (Skema 5W + 1H)</p>
+            <p class="text-slate-500 mt-4">Terjadi penumpukan sampah di beberapa titik sekitar kampus ITS akibat aktivitas mahasiswa dan masyarakat, sementara sistem pengelolaan belum optimal. [cite: 60]</p>
+        </div>
 
-<!-- MASALAH -->
-<section id="masalah">
-<h2>1. Identifikasi Masalah</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition">
+                <div class="w-12 h-12 rounded-xl bg-slate-900 text-white flex items-center justify-center font-bold text-lg mb-6">W1</div>
+                <h4 class="font-bold text-xl text-slate-900 mb-2">WHAT <span class="text-sm font-normal text-slate-400">(Apa)</span></h4>
+                <p class="text-sm text-slate-600 leading-relaxed">Sampah yang tidak terpilah menumpuk di TPS dan kantin sekitar ITS Sukolilo, didominasi sisa makanan dan plastik. [cite: 60]</p>
+            </div>
+            <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition">
+                <div class="w-12 h-12 rounded-xl bg-slate-900 text-white flex items-center justify-center font-bold text-lg mb-6">W2</div>
+                <h4 class="font-bold text-xl text-slate-900 mb-2">WHERE <span class="text-sm font-normal text-slate-400">(Dimana)</span></h4>
+                <p class="text-sm text-slate-600 leading-relaxed">Kantin terpusat ITS, TPS tiap gedung, kos Jl. Teknik Kimia, Jl. Raya ITS, dan Perumdos Blok U. [cite: 60]</p>
+            </div>
+            <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition">
+                <div class="w-12 h-12 rounded-xl bg-slate-900 text-white flex items-center justify-center font-bold text-lg mb-6">W3</div>
+                <h4 class="font-bold text-xl text-slate-900 mb-2">WHEN <span class="text-sm font-normal text-slate-400">(Kapan)</span></h4>
+                <p class="text-sm text-slate-600 leading-relaxed">Setiap hari, puncaknya jam makan siang (11.00-13.00) dan akhir perkuliahan (16.00-18.00). [cite: 60]</p>
+            </div>
+            <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition">
+                <div class="w-12 h-12 rounded-xl bg-slate-900 text-white flex items-center justify-center font-bold text-lg mb-6">W4</div>
+                <h4 class="font-bold text-xl text-slate-900 mb-2">WHO <span class="text-sm font-normal text-slate-400">(Siapa)</span></h4>
+                <p class="text-sm text-slate-600 leading-relaxed">Mahasiswa, dosen, staf, pedagang kantin, warga sekitar Keputih & Sukolilo, serta petugas kebersihan. [cite: 60]</p>
+            </div>
+            <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition">
+                <div class="w-12 h-12 rounded-xl bg-slate-900 text-white flex items-center justify-center font-bold text-lg mb-6">W5</div>
+                <h4 class="font-bold text-xl text-slate-900 mb-2">WHY <span class="text-sm font-normal text-slate-400">(Mengapa)</span></h4>
+                <p class="text-sm text-slate-600 leading-relaxed">Minim kesadaran pilah, sampah tercampur saat diangkut, dan rendahnya frekuensi pengangkutan. [cite: 60]</p>
+            </div>
+            <div class="bg-white p-8 rounded-2xl border border-emerald-100 bg-emerald-50/20 shadow-sm hover:shadow-md transition">
+                <div class="w-12 h-12 rounded-xl bg-geoGreen text-white flex items-center justify-center font-bold text-lg mb-6">H1</div>
+                <h4 class="font-bold text-xl text-slate-900 mb-2">HOW <span class="text-sm font-normal text-slate-400">(Bagaimana)</span></h4>
+                <p class="text-sm text-slate-600 leading-relaxed">Sampah berserakan karena overflow TPS, menimbulkan bau dan lindi yang mencemari tanah. [cite: 60]</p>
+            </div>
+        </div>
+    </section>
 
-<div class="card"><span class="badge">What</span> TPS kampus penuh & tidak termonitor</div>
-<div class="card"><span class="badge">Where</span> ITS, kos, kantin, jalan Sukolilo</div>
-<div class="card"><span class="badge">When</span> Setiap hari jam sibuk</div>
-<div class="card"><span class="badge">Who</span> Mahasiswa & petugas kebersihan</div>
-<div class="card"><span class="badge">Why</span> Tidak ada sistem real-time</div>
-<div class="card"><span class="badge">How</span> Sampah overflow sebelum diangkut</div>
-</section>
+    <section id="swot" class="bg-slate-900 text-white py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-bold text-geoGreen tracking-widest uppercase mb-2">Strategi & Validasi Ide</h2>
+                <p class="text-3xl sm:text-4xl font-black tracking-tight">Analisis SWOT</p>
+            </div>
 
-<!-- SWOT -->
-<section id="swot">
-<h2>2. SWOT</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+                <div class="bg-slate-800/60 border border-slate-800 p-8 rounded-2xl">
+                    <h3 class="text-xl font-bold text-emerald-400 mb-4">Strengths (Kekuatan)</h3>
+                    <ul class="space-y-3 text-sm text-slate-300 list-disc list-inside">
+                        <li>Memakai teknologi (sensor & GIS) agar data terpantau real-time. [cite: 79]</li>
+                        <li>Biaya alat murah, mudah diterapkan, dan mendukung ITS Smart Eco Campus. [cite: 79]</li>
+                        <li>Membuat pengangkutan lebih efisien dan berbasis data. [cite: 79]</li>
+                    </ul>
+                </div>
+                <div class="bg-slate-800/60 border border-slate-800 p-8 rounded-2xl">
+                    <h3 class="text-xl font-bold text-rose-400 mb-4">Weaknesses (Kelemahan)</h3>
+                    <ul class="space-y-3 text-sm text-slate-300 list-disc list-inside">
+                        <li>Hanya fokus monitoring, belum menyentuh perubahan perilaku masyarakat. [cite: 79]</li>
+                        <li>Sampah bisa tercampur kembali di truk pengangkut. [cite: 79]</li>
+                        <li>Risiko teknis sensor menurun akurasinya karena lindi dan kotoran. [cite: 79]</li>
+                    </ul>
+                </div>
+                <div class="bg-slate-800/60 border border-slate-800 p-8 rounded-2xl">
+                    <h3 class="text-xl font-bold text-blue-400 mb-4">Opportunities (Peluang)</h3>
+                    <ul class="space-y-3 text-sm text-slate-300 list-disc list-inside">
+                        <li>Tren Smart City memberikan peluang sebagai solusi awal. [cite: 79]</li>
+                        <li>Market luas mencakup perumahan, pasar, dan kawasan komersial. [cite: 79]</li>
+                        <li>Bisa diintegrasikan ke Smart Routing & AI prediksi sampah. [cite: 79]</li>
+                    </ul>
+                </div>
+                <div class="bg-slate-800/60 border border-slate-800 p-8 rounded-2xl">
+                    <h3 class="text-xl font-bold text-amber-400 mb-4">Threats (Ancaman)</h3>
+                    <ul class="space-y-3 text-sm text-slate-300 list-disc list-inside">
+                        <li>Rendahnya kesadaran memilah sampah dari masyarakat. [cite: 80]</li>
+                        <li>Persaingan teknologi serupa dengan inovasi yang lebih maju. [cite: 80]</li>
+                        <li>Risiko vandalisme atau kerusakan sensor di lapangan. [cite: 80]</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<div class="grid">
-<div class="card">✔ Real-time IoT monitoring</div>
-<div class="card">✖ Perilaku manusia sulit diubah</div>
-<div class="card">✔ Smart City opportunity</div>
-<div class="card">⚠ Vandalisme sensor</div>
-</div>
-</section>
+    <section id="persona" class="bg-slate-100 py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-bold text-geoGreen tracking-widest uppercase mb-2">Target Market</h2>
+                <p class="text-3xl sm:text-4xl font-black tracking-tight text-slate-900">Persona Board</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
+                    <h3 class="text-2xl font-bold text-slate-800 mb-2">Roni (48 Tahun)</h3>
+                    <p class="text-sm text-slate-500 mb-4">Koordinator Pengelolaan Lingkungan ITS [cite: 105]</p>
+                    <div class="bg-blue-50 p-4 rounded-xl border-l-4 border-blue-500 mb-4 text-sm text-slate-700 italic">
+                        "Saya butuh data, bukan laporan asumsi supaya tim tahu kapan harus mengambil sampah, bukan menunggu komplain." [cite: 105]
+                    </div>
+                    <ul class="text-sm text-slate-600 list-disc pl-5 mb-4 space-y-1">
+                        <li><strong>Tujuan:</strong> Mencegah overflow TPS dan optimasi rute. [cite: 105]</li>
+                        <li><strong>Frustasi:</strong> Tidak ada notifikasi saat penuh, jadwal manual. [cite: 105]</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
+                    <h3 class="text-2xl font-bold text-slate-800 mb-2">Maya (39 Tahun)</h3>
+                    <p class="text-sm text-slate-500 mb-4">Ketua Bank Sampah Kel. Keputih [cite: 110, 113, 118]</p>
+                    <div class="bg-emerald-50 p-4 rounded-xl border-l-4 border-emerald-500 mb-4 text-sm text-slate-700 italic">
+                        "Warga sudah mau pilah sampah, tapi kalau truk datang seenaknya dan campur semua, buat apa susah-susah pilah?" [cite: 122]
+                    </div>
+                    <ul class="text-sm text-slate-600 list-disc pl-5 mb-4 space-y-1">
+                        <li><strong>Tujuan:</strong> Mengetahui kapasitas TPS untuk koordinasi warga. [cite: 124]</li>
+                        <li><strong>Frustasi:</strong> Jadwal dinas tidak pasti dan TPS sering overflow. [cite: 129, 130]</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- PERSONA -->
-<section id="persona">
-<h2>3. Persona</h2>
+    <section id="empathy" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <h2 class="text-xs font-bold text-geoGreen tracking-widest uppercase mb-2">Validasi Lapangan</h2>
+            <p class="text-3xl sm:text-4xl font-black tracking-tight text-slate-900">Empathy Map & User Journey</p>
+            <p class="text-slate-500 mt-4">Wawancara dengan Pak Yun, Petugas Lingkungan ITS (Bekerja ±20 Tahun). [cite: 157]</p>
+        </div>
 
-<div class="grid">
-<div class="card">
-<b>Roni (48)</b><br>
-Koordinator ITS<br>
-Butuh data real-time TPS
-</div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-white p-6 border border-slate-200 rounded-2xl shadow-sm">
+                <h3 class="font-bold text-lg mb-4 text-geoBlue">Empathy Map Highlight</h3>
+                <ul class="text-sm text-slate-600 space-y-3">
+                    <li><strong>Think & Feel:</strong> Risih jika kotor, khawatir sampah daun/ranting menumpuk. [cite: 158, 186]</li>
+                    <li><strong>See:</strong> Masih ada mahasiswa buang sampah sembarangan. [cite: 160, 192]</li>
+                    <li><strong>Hear:</strong> Keluhan saat acara besar karena pekerjaan 2x lipat. [cite: 160, 195]</li>
+                    <li><strong>Pain:</strong> Fasilitas pengelolaan kompos minim. [cite: 202]</li>
+                </ul>
+            </div>
+            
+            <div class="bg-white p-6 border border-slate-200 rounded-2xl shadow-sm">
+                <h3 class="font-bold text-lg mb-4 text-geoGreen">User Journey Map (Pain Points)</h3>
+                <ul class="text-sm text-slate-600 space-y-3">
+                    <li><strong>Before:</strong> Menyiapkan alat tanpa briefing harian. [cite: 210]</li>
+                    <li><strong>During:</strong> Sampah organik menumpuk, beban bertambah drastis saat ada event. [cite: 210]</li>
+                    <li><strong>After:</strong> Evaluasi top-down, tidak ada sistem reward berbasis performa. [cite: 210]</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
-<div class="card">
-<b>Maya (39)</b><br>
-Bank Sampah<br>
-Butuh sampah tidak tercampur
-</div>
-</div>
-</section>
+    <section id="products" class="bg-slate-100 py-24 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-bold text-geoGreen tracking-widest uppercase mb-2">Prototipe Fisik & UI</h2>
+                <p class="text-3xl sm:text-4xl font-black tracking-tight text-slate-900">Spesifikasi Produk Smart Bin</p>
+                <p class="text-slate-500 mt-4">Integrasi perangkat keras di tempat sampah dan antarmuka aplikasi seluler bagi pengguna dan petugas. [cite: 42, 68]</p>
+            </div>
 
-<!-- IOT DASHBOARD -->
-<section id="iot">
-<h2>4. IoT Real-Time Dashboard</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+                <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-xl">
+                    <h3 class="text-xl font-bold text-slate-800 mb-6 border-b pb-4"><i class="fa-solid fa-dumpster text-geoGreen mr-2"></i> Komponen Smart Bin</h3>
+                    
+                    <div class="bg-slate-100 rounded-xl mb-6 aspect-video flex items-center justify-center border-2 border-dashed border-slate-300 relative overflow-hidden">
+                        <span class="text-slate-400 text-sm font-medium"><i class="fa-regular fa-image text-2xl block text-center mb-2"></i> [Sisipkan Gambar DIY Smart Trash di sini]</span>
+                    </div>
 
-<div class="card">
-TPS-1
-<div class="bar"><div class="fill" id="t1"></div></div>
-<p id="v1"></p>
-</div>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-rss text-blue-500 mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-sm text-slate-900">Sensor Deteksi (Ultrasonic / PIR)</h4>
+                                <p class="text-xs text-slate-600 mt-1">Menggunakan modul <strong>Ultrasonic HC-204</strong> dan PIR Sensor yang dipasang di penutup tempat sampah untuk mengukur jarak dan mendeteksi level volume sampah organik maupun anorganik. [cite: 20, 23, 24]</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-microchip text-slate-700 mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-sm text-slate-900">Mikrokontroler & Modul Komunikasi</h4>
+                                <p class="text-xs text-slate-600 mt-1">Sistem ditenagai oleh <strong>Raspberry Pi Zero W</strong> atau <strong>NodeMCU / ESP8266 WiFi Module</strong> untuk memproses data sensor dan mengirimkannya ke cloud. [cite: 21, 26, 41]</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-solar-panel text-amber-500 mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-sm text-slate-900">Sistem Catu Daya</h4>
+                                <p class="text-xs text-slate-600 mt-1">Memanfaatkan <strong>Solar Panel</strong> yang dipadukan dengan modul PowerBank/Power Supply agar alat dapat beroperasi secara mandiri di luar ruangan. [cite: 22, 27]</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
 
-<div class="card">
-TPS-2
-<div class="bar"><div class="fill" id="t2"></div></div>
-<p id="v2"></p>
-</div>
+                <div class="bg-slate-900 p-8 rounded-3xl border border-slate-800 shadow-xl text-white">
+                    <h3 class="text-xl font-bold mb-6 border-b border-slate-700 pb-4"><i class="fa-solid fa-mobile-screen text-blue-400 mr-2"></i> Mobile Interface & Alert</h3>
+                    
+                    <div class="bg-slate-800 rounded-xl mb-6 aspect-[4/3] flex items-center justify-center border-2 border-dashed border-slate-600 relative overflow-hidden mx-auto w-3/4">
+                        <span class="text-slate-500 text-sm font-medium"><i class="fa-regular fa-image text-2xl block text-center mb-2"></i> [Sisipkan Gambar UI App di sini]</span>
+                    </div>
 
-<div class="card">
-TPS-3
-<div class="bar"><div class="fill" id="t3"></div></div>
-<p id="v3"></p>
-</div>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-percent text-emerald-400 mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-sm">Tank Level Monitor</h4>
+                                <p class="text-xs text-slate-400 mt-1">Menampilkan visualisasi grafis dan persentase kepenuhan tempat sampah (misalnya <strong>68%</strong>) pada menu <em>Garbage Tank Detection</em>. [cite: 1, 3, 4]</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-bell text-rose-400 mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-sm">Status Ketinggian (High Level) & Lokasi</h4>
+                                <p class="text-xs text-slate-400 mt-1">Aplikasi akan menunjukkan status <strong>"High Level"</strong> beserta rincian <strong>"Address"</strong> (alamat spesifik) titik TPS yang membutuhkan evakuasi. [cite: 5, 6]</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-truck-fast text-amber-400 mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-sm">Push Notification ke Petugas</h4>
+                                <p class="text-xs text-slate-400 mt-1">Jika kapasitas penuh, pesan <strong>"Sampah Penuh! Tolong Dibersihkan"</strong> (Alert) langsung dikirimkan ke aplikasi supir truk pengangkut. [cite: 14, 15, 31]</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<div id="alert"></div>
-</section>
+    <section id="mechanism" class="bg-white py-24 border-t border-slate-200 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-bold text-geoGreen tracking-widest uppercase mb-2">Arsitektur Sistem</h2>
+                <p class="text-3xl sm:text-4xl font-black tracking-tight text-slate-900">Alur Kerja Cerdas (End-to-End)</p>
+                <p class="text-slate-500 mt-4">Bagaimana data ketinggian sampah ditangkap hingga akhirnya truk dinas datang menjemput. [cite: 35, 42]</p>
+            </div>
 
-<!-- GIS MAP -->
-<section>
-<h2>5. GIS Monitoring</h2>
-<div id="map"></div>
-</section>
+            <div class="bg-slate-50 rounded-2xl mb-12 aspect-video lg:aspect-[21/9] flex items-center justify-center border-2 border-dashed border-slate-300 relative overflow-hidden max-w-5xl mx-auto shadow-sm">
+                <span class="text-slate-400 text-sm font-medium"><i class="fa-regular fa-image text-3xl block text-center mb-2"></i> [Sisipkan Gambar Diagram Arsitektur IoT (Halaman 3/5) di sini]</span>
+            </div>
 
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 relative max-w-5xl mx-auto">
+                <div class="bg-slate-50 border border-slate-200 p-6 rounded-2xl relative shadow-sm hover:shadow-md transition">
+                    <div class="absolute -top-4 left-6 bg-slate-800 text-white text-[10px] font-black px-3 py-1 rounded">01. SENSING</div>
+                    <h4 class="font-bold text-sm text-slate-900 mt-4">Deteksi Tempat Sampah</h4>
+                    <p class="text-xs text-slate-600 mt-2"><strong>Smart Bin / Dustbin</strong> membaca kapasitas tumpukan menggunakan sensor <strong>Ultrasonic / PIR</strong> yang dipasang di bagian atas wadah. [cite: 23, 24, 25, 38]</p>
+                </div>
+                <div class="bg-slate-50 border border-slate-200 p-6 rounded-2xl relative shadow-sm hover:shadow-md transition">
+                    <div class="absolute -top-4 left-6 bg-slate-800 text-white text-[10px] font-black px-3 py-1 rounded">02. TRANSMISSION</div>
+                    <h4 class="font-bold text-sm text-slate-900 mt-4">Pengiriman Data (IoT)</h4>
+                    <p class="text-xs text-slate-600 mt-2">Data ketinggian sampah diproses oleh <strong>NodeMCU / Raspberry Pi</strong> lalu dikirim melalui koneksi jaringan WiFi / Internet menggunakan protokol <strong>MQTT Broker</strong>. [cite: 13, 17, 21, 32, 40, 41]</p>
+                </div>
+                <div class="bg-slate-50 border border-slate-200 p-6 rounded-2xl relative shadow-sm hover:shadow-md transition">
+                    <div class="absolute -top-4 left-6 bg-slate-800 text-white text-[10px] font-black px-3 py-1 rounded">03. SERVER & DB</div>
+                    <h4 class="font-bold text-sm text-slate-900 mt-4">Pemrosesan Visualisasi</h4>
+                    <p class="text-xs text-slate-600 mt-2">Data diterima oleh <strong>Web-Server</strong>, direkam dalam database <strong>MongoDB</strong>, lalu masuk ke <em>Operation Center</em> untuk ditampilkan sebagai visualisasi dashboard. [cite: 11, 12, 30, 33, 36, 39]</p>
+                </div>
+                <div class="bg-slate-50 border border-slate-200 p-6 rounded-2xl relative shadow-sm hover:shadow-md transition">
+                    <div class="absolute -top-4 left-6 bg-rose-500 text-white text-[10px] font-black px-3 py-1 rounded">04. ACTION (ALERT)</div>
+                    <h4 class="font-bold text-sm text-slate-900 mt-4">Peringatan Pengangkutan</h4>
+                    <p class="text-xs text-slate-600 mt-2">Sistem menggunakan <strong>IFTTT (Triggers Webhook)</strong> untuk mengirim <strong>Push Notif (Alert)</strong> kepada "End User" (Petugas / Supir Truk Sampah) untuk segera melakukan koleksi data. [cite: 14, 28, 29, 31, 42]</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<script>
-// =====================
-// MAP INIT
-// =====================
-var map = L.map('map').setView([-7.285,112.795], 15);
-
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
-attribution:'GeoWaste'
-}).addTo(map);
-
-L.marker([-7.285,112.795]).addTo(map)
-.bindPopup("TPS ITS Smart Node").openPopup();
-
-
-// =====================
-// IoT SIMULATION
-// =====================
-function randomLevel(){
-return Math.floor(Math.random()*100);
-}
-
-function update(){
-let t1=randomLevel();
-let t2=randomLevel();
-let t3=randomLevel();
-
-document.getElementById("t1").style.width=t1+"%";
-document.getElementById("t2").style.width=t2+"%";
-document.getElementById("t3").style.width=t3+"%";
-
-document.getElementById("v1").innerText=t1+"%";
-document.getElementById("v2").innerText=t2+"%";
-document.getElementById("v3").innerText=t3+"%";
-
-let alert="";
-
-if(t1>80 || t2>80 || t3>80){
-alert="⚠ TPS PENUH TERDETEKSI - TRUK HARUS DIKIRIM";
-}
-
-document.getElementById("alert").innerHTML=
-alert?'<div class="alert">'+alert+'</div>':"";
-}
-
-setInterval(update,2000);
-update();
-</script>
+    <footer class="bg-geoDark text-slate-400 py-12 border-t border-slate-800 text-center text-sm">
+        <p>&copy; 2026 GeoWaste Mapper. Tim Pengembang: Dwicky, Gisheila (T. Geofisika), Abid, Faiz (T. Lingkungan), Habil (T. Mesin). [cite: 46, 47, 48, 49, 50]</p>
+    </footer>
 
 </body>
 </html>
